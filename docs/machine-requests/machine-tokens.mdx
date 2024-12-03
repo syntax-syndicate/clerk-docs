@@ -15,7 +15,7 @@ Every machine token you create needs to be associated with a `machine_id`. You c
 
 - It must be prefixed with `mch_`
 - It must only contain lowercase letters and numbers
-- It must be 255 characters or less
+- It must be 96 characters or less
 
 > [!TIP]
 > It is a good idea to have the `machine_id` correspond with the identity of the service generating the token. For example if you have a cron service, a `machine_id` of `mch_cron` would make sense.
@@ -60,10 +60,6 @@ Every generated token has default claims that cannot be overridden by custom cla
 - `nbf`: not before - the time before which the token is considered invalid, as a Unix timestamp. Determined using the **Allowed Clock Skew** request body parameter when creating machine tokens. See [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.5) for more information.
 - `sub`: subject - the ID of the machine that created the token. Determined using the **Machine ID** request body parameter when creating machine tokens. For example: `mch_123`. See [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2) for more information.
 
-## Making Machine Requests
+## Using Machine Tokens to create and verify requests
 
-To start making machine requests, refer to [making machine requests](/docs/machine-requests/making).
-
-## Validating Machine Tokens
-
-To learn how to manually verify a machine token, refer to [validating machine tokens](/docs/machine-requests/verifying).
+To start using machine tokens to create and verify requests, refer to [making machine requests](/docs/machine-requests/machine-requests).

@@ -770,20 +770,12 @@
               "items": [
                 [
                   {
-                    "title": "Overview",
-                    "href": "/docs/machine-requests/overview"
+                    "title": "Machine requests",
+                    "href": "/docs/machine-requests/machine-requests"
                   },
                   {
                     "title": "Machine tokens",
                     "href": "/docs/machine-requests/machine-tokens"
-                  },
-                  {
-                    "title": "Making machine requests",
-                    "href": "/docs/machine-requests/making"
-                  },
-                  {
-                    "title": "Verifying machine requests",
-                    "href": "/docs/machine-requests/verifying"
                   }
                 ]
               ]
