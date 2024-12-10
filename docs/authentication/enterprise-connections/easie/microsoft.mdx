@@ -31,7 +31,7 @@ Enabling EASIE SSO with Microsoft (formerly [Active Directory](https://learn.mic
 
 For _development instances_, Clerk uses preconfigured shared credentials and redirect URIs—no other configuration is needed.
 
-1. In the Clerk Dashboard, navigate to the [**SSO Connections**](https://dashboard.clerk.com/last-active?path=user-authentication/sso-connections) page.
+1. In the Clerk Dashboard, navigate to the [**SSO connections**](https://dashboard.clerk.com/last-active?path=user-authentication/sso-connections) page.
 1. Select the **Add connection** button, and select **For specific domains**.
 1. Under **EASIE**, select **Microsoft** as the identity provider.
 1. Add the **Specific Domain** that you want to allow this connection for. This is the domain of the users you want to allow to sign in to your app.
@@ -44,12 +44,12 @@ For _development instances_, Clerk uses preconfigured shared credentials and red
 
 For _production instances_, you must provide custom credentials, which involves generating your own **Client ID** and **Client Secret** using your Microsoft Entra ID account.
 
-To make the setup process easier, it's recommended to keep two browser tabs open: one for your [Clerk Dashboard](https://dashboard.clerk.com/last-active?path=user-authentication/sso-connections) and one for your [Microsoft Azure portal](https://portal.azure.com).
+To make the setup process easier, it's recommended to keep two browser tabs open: one for the [Clerk Dashboard](https://dashboard.clerk.com/last-active?path=user-authentication/sso-connections) and one for your [Microsoft Azure portal](https://portal.azure.com).
 
 <Steps>
   ### Enable Microsoft as an EASIE connection
 
-  1. In the Clerk Dashboard, navigate to the [**SSO Connections**](https://dashboard.clerk.com/last-active?path=user-authentication/sso-connections) page.
+  1. In the Clerk Dashboard, navigate to the [**SSO connections**](https://dashboard.clerk.com/last-active?path=user-authentication/sso-connections) page.
   1. Select **Add connection** and select **For specific domains**.
   1. Under **EASIE**, select **Microsoft** as the identity provider.
   1. Add the **Specific Domain** that you want to allow this connection for. This is the domain of the users you want to allow to sign in to your app.
@@ -74,7 +74,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
 
   [nOAuth](https://www.descope.com/blog/post/noauth) is an exploit in Microsoft Entra ID OAuth apps that can lead to account takeovers via email address spoofing. Clerk mitigates this risk by enforcing stricter checks on verified email addresses.
 
-  For further security, Microsoft offers an optional `xms_edov` claim, which provides additional context to determine whether the returned email is verified.
+  For further security, Microsoft offers an optional `xms_edov` [claim](https://learn.microsoft.com/en-us/entra/identity-platform/optional-claims-reference), which provides additional context to determine whether the returned email is verified.
 
   This claim is mandatory for applications backing EASIE connections. To enable it, you must:
 
@@ -83,8 +83,6 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **Add optional claim**.
   1. For the **Token type**, select **ID**. Then, in the table that opens, enable the `email` and `xms_pdl` claims.
   1. At the bottom of the modal, select **Add**. A new modal will prompt you to turn on the Microsoft Graph email permission. Enable it, then select **Add** to complete the form.
-     > [!NOTE]
-     > At the time of writing, the `xms_edov` claim is still in preview and may not be available for all apps. We'll choose another claim and rename it in the manifest later.
   1. Repeat the previous steps for **Token type**, but select **Access** instead of **ID**. The **Optional claims** list should now show two claims for `email` and two for `xms_pdl`: one each for **ID** and **Access**.
   1. In the sidebar, go to **Manifest**.
   1. In the text editor, search for `"acceptMappedClaims"` and set its value from `null` to `true`.
@@ -105,7 +103,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
      > When your secret expires, your social connection will stop working until you generate a new client secret and add it to your Clerk app.
   1. Save the new client secret's **Value** somewhere secure. You'll add this and your client ID to your Clerk app later. Keep this page open.
 
-  ### Set the Client ID and Client Secret in your Clerk Dashboard
+  ### Set the Client ID and Client Secret in the Clerk Dashboard
 
   Go back to the Clerk Dashboard, where the modal should still be open, and paste the **Client ID** and **Client Secret** values into the respective fields. Note that if you have any other Microsoft EASIE connections or a [Microsoft social connection](docs/authentication/social-connections/microsoft), this will update the credentials for all of them. Select **Add connection**.
 
