@@ -1253,6 +1253,10 @@
                         }
                       ]
                     ]
+                  },
+                  {
+                    "title": "Clerk JWT Debugger",
+                    "href": "/docs/troubleshooting/jwt-debugger"
                   }
                 ]
               ]
